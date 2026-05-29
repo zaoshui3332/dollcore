@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Google",
+    "url": "https://www.google.com",
+    "category": "工具",
+    "description": "全球最大的搜索引擎。",
+    "icon_url": ""
+  },
+  {
+    "id": 2,
+    "name": "Steam",
+    "category": "其他",
+    "description": "全球最大PC游戏平台",
+    "icon_url": "",
+    "url": "https://store.steampowered.com/"
+  },
+  {
+    "id": 3,
+    "name": "nanoka",
+    "category": "其他",
+    "description": "崩坏星穹铁道，原神，鸣潮，绝区零，异环游戏数据库",
+    "icon_url": "",
+    "url": "https://nanoka.cc/"
+  },
+  {
+    "id": 4,
+    "name": "三角洲鼠鼠工具",
+    "category": "其他",
+    "description": "卡战备，密码，特勤处制造，交易行价格变动等讯息",
+    "icon_url": "",
+    "url": "https://shushu.fan/kzb"
+  },
+  {
+    "id": 5,
+    "name": "野草云服务器",
+    "category": "其他",
+    "description": "低价性价比服务器",
+    "icon_url": "",
+    "url": "https://www.yecaoyun.com/Page/offers.html"
+  },
+  {
+    "id": 6,
+    "name": "Nexus Mods",
+    "category": "其他",
+    "description": "N网，游戏Mod分享社区",
+    "icon_url": "",
+    "url": "https://www.nexusmods.com/"
+  },
+  {
+    "id": 7,
+    "name": "GitHub",
+    "category": "其他",
+    "description": "最大的代码托管平台",
+    "icon_url": "",
+    "url": "https://github.com/"
+  },
+  {
+    "id": 8,
+    "name": "肉夹馍-多表后端代码生成工具",
+    "category": "其他",
+    "description": "多表数据库脚本，自动生成后端代码",
+    "icon_url": "",
+    "url": "http://www.rjm-creater.top/"
+  },
+  {
+    "id": 9,
+    "name": "Claude Code",
+    "category": "其他",
+    "description": "Anthropic官方推出的Agent，支持masOS、Linux、Windows",
+    "icon_url": "",
+    "url": "https://code.claude.com/docs/zh-CN/overview"
+  }
+]

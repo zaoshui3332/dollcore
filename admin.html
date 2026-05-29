@@ -9,7 +9,14 @@
     .admin-page { padding: 40px 20px; }
     .admin-page h1 { margin-bottom: 8px; }
     .admin-page .sub { color: var(--text2); font-size: 0.9rem; margin-bottom: 24px; }
-    .admin-toolbar { margin-bottom: 20px; }
+    .admin-tabs { display: flex; gap: 0; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .admin-tab {
+      padding: 10px 24px; cursor: pointer; font-size: 0.9rem;
+      color: var(--text2); border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s; background: none; border-top: none; border-left: none; border-right: none;
+    }
+    .admin-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .admin-toolbar { display: flex; gap: 10px; margin-bottom: 20px; align-items: center; flex-wrap: wrap; }
     .admin-toolbar input {
       background: var(--bg2); border: 1px solid var(--bg3); color: var(--text);
       padding: 10px 16px; border-radius: var(--radius); font-size: 0.9rem; width: 220px;
@@ -17,6 +24,38 @@
   </style>
 </head>
 <body>
+
+  <div id="admin-gate" class="gate" style="display:none">
+    <canvas id="particles"></canvas>
+    <div class="gate-bg-shapes">
+      <div class="gate-shape gate-shape-1"></div>
+      <div class="gate-shape gate-shape-2"></div>
+    </div>
+    <div class="gate-card" id="admin-gate-card">
+      <h1 class="gate-logo">Dollcore</h1>
+      <p class="gate-poem">管理面板</p>
+      <div class="gate-divider"></div>
+      <p class="gate-hint">请输入管理密码以继续</p>
+      <form id="admin-gate-form" class="gate-form">
+        <input id="admin-gate-input" class="gate-input" type="password" placeholder="管理密码..." autofocus />
+        <p id="admin-gate-error" class="gate-error" style="display:none">密码错误，请重试</p>
+        <button type="submit" class="gate-btn">
+          <span>进入</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <div class="gate-theme-row">
+      <button class="theme-toggle" id="theme-toggle-gate" title="切换主题">
+        <span class="theme-opt dark-opt active">暗</span>
+        <span class="theme-opt light-opt">亮</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="admin-app" style="display:none">
   <nav class="navbar">
     <div class="inner">
       <a href="index.html" class="logo">Dollcore</a>
@@ -33,45 +72,61 @@
 
   <div class="container admin-page">
     <h1>管理面板</h1>
-    <p class="sub">编辑软件列表，完成后导出 JSON 文件替换项目中的 <code>software.json</code></p>
+    <p class="sub">编辑软件与网站列表，完成后导出 JSON 文件替换项目中对应的文件</p>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-type="software">软件管理</button>
+      <button class="admin-tab" data-type="websites">网站管理</button>
+    </div>
 
     <div class="admin-toolbar">
-      <input id="admin-search" placeholder="搜索软件..." />
+      <input id="admin-search" placeholder="搜索..." />
       <button class="btn btn-outline" id="admin-refresh">刷新</button>
-      <button class="btn btn-primary" id="admin-add">+ 添加软件</button>
-      <button class="btn btn-outline" id="admin-export" style="margin-left:8px">导出 JSON</button>
+      <button class="btn btn-primary" id="admin-add">+ 添加</button>
+      <button class="btn btn-outline" id="admin-export">导出 JSON</button>
     </div>
 
     <div id="table-wrap" style="overflow-x:auto">
       <table>
-        <thead>
-          <tr><th>ID</th><th>名称</th><th>版本</th><th>分类</th><th>路径</th><th>操作</th></tr>
-        </thead>
+        <thead id="table-head"></thead>
         <tbody id="table-body"></tbody>
       </table>
     </div>
     <div id="admin-empty" class="empty" style="display:none">
       <div class="icon">📋</div>
-      <h3>暂无软件条目</h3>
-      <p>点击"添加软件"创建您的第一个条目。</p>
+      <h3>暂无条目</h3>
+      <p>点击"添加"创建您的第一个条目。</p>
     </div>
 
     <div id="modal" class="modal-overlay" style="display:none">
       <div class="modal">
-        <h2 id="modal-title">添加软件</h2>
+        <h2 id="modal-title">添加</h2>
         <form id="modal-form">
-          <div class="field"><label>名称 *</label><input name="name" required placeholder="软件名称" /></div>
-          <div class="field-row">
-            <div class="field"><label>版本</label><input name="version" placeholder="1.0.0" /></div>
-            <div class="field"><label>分类</label>
-              <select name="category">
-                <option value="其他">其他</option><option value="开发">开发</option><option value="设计">设计</option>
-                <option value="游戏">游戏</option><option value="工具">工具</option><option value="媒体">媒体</option><option value="生产力">生产力</option>
-              </select>
+          <div class="field"><label>名称 *</label><input name="name" required placeholder="名称" /></div>
+          <div id="modal-fields-software">
+            <div class="field-row">
+              <div class="field"><label>版本</label><input name="version" placeholder="1.0.0" /></div>
+              <div class="field"><label>分类</label>
+                <select name="category">
+                  <option value="其他">其他</option><option value="开发">开发</option><option value="设计">设计</option>
+                  <option value="游戏">游戏</option><option value="工具">工具</option><option value="媒体">媒体</option><option value="生产力">生产力</option>
+                </select>
+              </div>
+            </div>
+            <div class="field"><label>文件 / 下载路径</label><input name="file_path" placeholder="粘贴本地路径或URL" /></div>
+          </div>
+          <div id="modal-fields-website" style="display:none">
+            <div class="field"><label>网址 *</label><input name="url" placeholder="https://..." /></div>
+            <div class="field-row">
+              <div class="field"><label>分类</label>
+                <select name="category_web">
+                  <option value="其他">其他</option><option value="工具">工具</option><option value="资源">资源</option>
+                  <option value="学习">学习</option><option value="设计">设计</option><option value="开发">开发</option><option value="媒体">媒体</option>
+                </select>
+              </div>
             </div>
           </div>
-          <div class="field"><label>描述</label><textarea name="description" placeholder="描述该软件..."></textarea></div>
-          <div class="field"><label>文件 / 下载路径</label><input name="file_path" placeholder="粘贴本地路径或URL" /></div>
+          <div class="field"><label>描述</label><textarea name="description" placeholder="描述..."></textarea></div>
           <div class="field"><label>图标 URL</label><input name="icon_url" placeholder="https://..." /></div>
           <div class="btns">
             <button type="button" class="btn btn-outline" id="modal-cancel">取消</button>
@@ -80,6 +135,7 @@
         </form>
       </div>
     </div>
+  </div>
   </div>
 
   <script src="js/admin.js"></script>

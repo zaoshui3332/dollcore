@@ -1,11 +1,20 @@
 [
   {
     "id": 1,
-    "name": "111",
-    "version": "1.0.0",
-    "category": "其他",
-    "description": "1111",
-    "file_path": "",
+    "name": "Everything",
+    "version": "1.4.1.1032",
+    "category": "工具",
+    "description": "Wimdows系统轻量级的文件检索工具",
+    "file_path": "https://www.voidtools.com/zh-cn/downloads/",
+    "icon_url": ""
+  },
+  {
+    "id": 2,
+    "name": "PrivaZer",
+    "version": "4.0.122",
+    "category": "工具",
+    "description": "一款免费的电脑深度清理工具，简单易上手",
+    "file_path": "https://privazer.com/zc/download.php",
     "icon_url": ""
   }
 ]

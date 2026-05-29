@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dollcore - Software Center</title>
+  <title>Dollcore</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -52,34 +52,47 @@
       </div>
     </nav>
 
-    <div id="page-home" class="page container" style="display:none">
-      <div class="hero">
-        <h1>软件中心</h1>
-        <p>发现和下载软件。</p>
-      </div>
-      <div class="toolbar-row">
-        <form id="search-form">
-          <input id="search-input" placeholder="搜索软件..." />
-          <button type="submit" class="btn btn-primary">搜索</button>
-        </form>
-        <select id="category-filter"><option value="">全部分类</option></select>
-      </div>
-      <div id="software-grid" class="grid"></div>
-      <div id="home-empty" class="empty" style="display:none">
-        <div class="icon">📦</div>
-        <h3>未找到软件</h3>
-        <p>暂无软件条目。</p>
-      </div>
-    </div>
+    <div class="layout">
+      <aside class="sidebar" id="sidebar">
+        <a href="#" class="sidebar-item active" data-section="software">
+          <span>软件</span>
+        </a>
+        <a href="#" class="sidebar-item" data-section="websites">
+          <span>网站</span>
+        </a>
+      </aside>
 
-    <div id="page-detail" class="page container detail" style="display:none">
-      <a href="#" class="back" data-nav="home">&larr; 返回首页</a>
-      <h1 id="detail-name"></h1>
-      <div class="info" id="detail-info"></div>
-      <div class="desc" id="detail-desc"></div>
-      <div class="actions">
-        <button class="btn btn-primary" id="detail-download">下载</button>
-      </div>
+      <main class="main">
+        <div id="page-home" class="page" style="display:none">
+          <div class="hero">
+            <h1 id="hero-title">软件中心</h1>
+            <p id="hero-desc">发现和下载软件。</p>
+          </div>
+          <div class="toolbar-row">
+            <form id="search-form">
+              <input id="search-input" placeholder="搜索..." />
+              <button type="submit" class="btn btn-primary">搜索</button>
+            </form>
+            <select id="category-filter"><option value="">全部分类</option></select>
+          </div>
+          <div id="card-grid" class="grid"></div>
+          <div id="home-empty" class="empty" style="display:none">
+            <div class="icon">📦</div>
+            <h3>暂无内容</h3>
+            <p>暂无条目。</p>
+          </div>
+        </div>
+
+        <div id="page-detail" class="page detail" style="display:none">
+          <a href="#" class="back" data-nav="home">&larr; 返回首页</a>
+          <h1 id="detail-name"></h1>
+          <div class="info" id="detail-info"></div>
+          <div class="desc" id="detail-desc"></div>
+          <div class="actions">
+            <button class="btn btn-primary" id="detail-action">下载</button>
+          </div>
+        </div>
+      </main>
     </div>
   </div>
 
