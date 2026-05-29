@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dollcore - Software Center</title>
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ===== Gate / Verification ===== -->
-  <div id="page-gate" class="gate" style="display: none;">
-    <canvas id="particles" width="880" height="828"></canvas>
+  <div id="page-gate" class="gate" style="display:none">
+    <canvas id="particles"></canvas>
     <div class="gate-bg-shapes">
       <div class="gate-shape gate-shape-1"></div>
       <div class="gate-shape gate-shape-2"></div>
@@ -21,12 +20,12 @@
       <div class="gate-divider"></div>
       <p class="gate-hint">请输入验证信息以继续</p>
       <form id="gate-form" class="gate-form">
-        <input id="gate-input" class="gate-input" type="text" placeholder="验证信息..." autofocus="">
+        <input id="gate-input" class="gate-input" type="text" placeholder="验证信息..." autofocus />
         <p id="gate-error" class="gate-error" style="display:none">验证信息错误，请重试</p>
         <button type="submit" class="gate-btn">
           <span>进入</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
       </form>
@@ -39,15 +38,12 @@
     </div>
   </div>
 
-  <!-- ===== Main App ===== -->
-  <div id="app" style="">
-    <!-- Navbar -->
+  <div id="app">
     <nav class="navbar">
       <div class="inner">
-        <a href="#" class="logo active" data-nav="home">Dollcore</a>
+        <a href="#" class="logo" data-nav="home">Dollcore</a>
         <div class="links">
-          <a href="#" data-nav="home" class="">首页</a>
-          <a href="#" data-nav="admin" class="">管理</a>
+          <a href="#" data-nav="home">首页</a>
           <button class="theme-toggle" id="theme-toggle-nav" title="切换主题">
             <span class="theme-opt dark-opt active">暗</span>
             <span class="theme-opt light-opt">亮</span>
@@ -56,161 +52,37 @@
       </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="page-home" class="page container" style="display: none;">
+    <div id="page-home" class="page container" style="display:none">
       <div class="hero">
         <h1>软件中心</h1>
-        <p>发现和下载软件。通过管理面板添加您自己的软件路径。</p>
+        <p>发现和下载软件。</p>
       </div>
       <div class="toolbar-row">
         <form id="search-form">
-          <input id="search-input" placeholder="搜索软件...">
+          <input id="search-input" placeholder="搜索软件..." />
           <button type="submit" class="btn btn-primary">搜索</button>
         </form>
-        <select id="category-filter"><option value="">全部分类</option><option value="工具">工具</option><option value="其他">其他</option></select>
+        <select id="category-filter"><option value="">全部分类</option></select>
       </div>
-      <div id="software-grid" class="grid">
-      <a href="#" class="card" data-detail="1">
-        <h3>everything</h3>
-        <div class="ver">v1.0.0</div>
-        <div class="desc">文件查找工具</div>
-        <div class="meta">
-          <span class="cat">工具</span>
-          <span>1 次下载</span>
-        </div>
-      </a>
-    
-      <a href="#" class="card" data-detail="2">
-        <h3>PrivaZer</h3>
-        <div class="ver">v1.0.0</div>
-        <div class="desc">C盘清理工具</div>
-        <div class="meta">
-          <span class="cat">工具</span>
-          <span>0 次下载</span>
-        </div>
-      </a>
-    
-      <a href="#" class="card" data-detail="3">
-        <h3>Clash Vage</h3>
-        <div class="ver">v1.0.0</div>
-        <div class="desc">基于规则的网络代理工具</div>
-        <div class="meta">
-          <span class="cat">其他</span>
-          <span>0 次下载</span>
-        </div>
-      </a>
-    </div>
+      <div id="software-grid" class="grid"></div>
       <div id="home-empty" class="empty" style="display:none">
         <div class="icon">📦</div>
         <h3>未找到软件</h3>
-        <p>前往管理面板添加软件条目。</p>
+        <p>暂无软件条目。</p>
       </div>
-      <div id="home-loading" class="empty" style="display: none;"><p>加载中...</p></div>
     </div>
 
-    <!-- Detail Page -->
-    <div id="page-detail" class="page container detail" style="">
-      <a href="#" class="back" data-nav="home">← 返回首页</a>
-      <h1 id="detail-name">PrivaZer</h1>
-      <div class="info" id="detail-info">
-    <span>版本 1.0.0</span>
-    <span>工具</span>
-    <span>0 次下载</span>
-  </div>
-      <div class="desc" id="detail-desc">C盘清理工具</div>
+    <div id="page-detail" class="page container detail" style="display:none">
+      <a href="#" class="back" data-nav="home">&larr; 返回首页</a>
+      <h1 id="detail-name"></h1>
+      <div class="info" id="detail-info"></div>
+      <div class="desc" id="detail-desc"></div>
       <div class="actions">
         <button class="btn btn-primary" id="detail-download">下载</button>
-        <a href="#" class="btn btn-outline" data-nav="admin">在管理面板中管理</a>
-      </div>
-    </div>
-
-    <!-- Admin Page -->
-    <div id="page-admin" class="page container admin" style="display: none;">
-      <h1>管理面板</h1>
-      <div class="admin-toolbar">
-        <input id="admin-search" placeholder="搜索软件...">
-        <button class="btn btn-outline" id="admin-refresh">刷新</button>
-        <button class="btn btn-primary" id="admin-add">+ 添加软件</button>
-      </div>
-      <div id="admin-table-wrap" style="overflow-x:auto">
-        <table>
-          <thead>
-            <tr><th>ID</th><th>名称</th><th>版本</th><th>分类</th><th>下载次数</th><th>操作</th></tr>
-          </thead>
-          <tbody id="admin-table-body">
-      <tr>
-        <td>1</td>
-        <td><strong>everything</strong></td>
-        <td>1.0.0</td>
-        <td>工具</td>
-        <td>1</td>
-        <td style="display:flex;gap:8px">
-          <button class="btn btn-outline btn-sm" data-edit="1">编辑</button>
-          <button class="btn btn-danger btn-sm" data-delete="1">删除</button>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>2</td>
-        <td><strong>PrivaZer</strong></td>
-        <td>1.0.0</td>
-        <td>工具</td>
-        <td>0</td>
-        <td style="display:flex;gap:8px">
-          <button class="btn btn-outline btn-sm" data-edit="2">编辑</button>
-          <button class="btn btn-danger btn-sm" data-delete="2">删除</button>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>3</td>
-        <td><strong>Clash Vage</strong></td>
-        <td>1.0.0</td>
-        <td>其他</td>
-        <td>0</td>
-        <td style="display:flex;gap:8px">
-          <button class="btn btn-outline btn-sm" data-edit="3">编辑</button>
-          <button class="btn btn-danger btn-sm" data-delete="3">删除</button>
-        </td>
-      </tr>
-    </tbody>
-        </table>
-      </div>
-      <div id="admin-empty" class="empty" style="display:none">
-        <div class="icon">📋</div>
-        <h3>暂无软件条目</h3>
-        <p>点击"添加软件"创建您的第一个条目。</p>
-      </div>
-
-      <!-- Modal -->
-      <div id="modal" class="modal-overlay" style="display: none;">
-        <div class="modal">
-          <h2 id="modal-title">添加软件</h2>
-          <form id="modal-form">
-            <div class="field"><label>名称 *</label><input name="name" required="" placeholder="软件名称"></div>
-            <div class="field-row">
-              <div class="field"><label>版本</label><input name="version" placeholder="1.0.0"></div>
-              <div class="field"><label>分类</label>
-                <select name="category">
-                  <option value="其他">其他</option><option value="开发">开发</option><option value="设计">设计</option>
-                  <option value="游戏">游戏</option><option value="工具">工具</option><option value="媒体">媒体</option><option value="生产力">生产力</option>
-                </select>
-              </div>
-            </div>
-            <div class="field"><label>描述</label><textarea name="description" placeholder="描述该软件..."></textarea></div>
-            <div class="field"><label>文件 / 下载路径</label><input name="file_path" placeholder="粘贴本地路径或URL"></div>
-            <div class="field"><label>图标 URL</label><input name="icon_url" placeholder="https://..."></div>
-            <div class="btns">
-              <button type="button" class="btn btn-outline" id="modal-cancel">取消</button>
-              <button type="submit" class="btn btn-primary" id="modal-save">创建</button>
-            </div>
-          </form>
-        </div>
       </div>
     </div>
   </div>
 
-  <script src="./js/app.js"></script>
-
-
+  <script src="js/app.js"></script>
 </body>
+</html>

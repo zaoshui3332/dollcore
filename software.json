@@ -1,29 +1,11 @@
 [
   {
     "id": 1,
-    "name": "everything",
-    "version": "1.0.0",
-    "category": "工具",
-    "description": "文件查找工具",
-    "file_path": "",
-    "download_count": 1
-  },
-  {
-    "id": 2,
-    "name": "PrivaZer",
-    "version": "1.0.0",
-    "category": "工具",
-    "description": "C盘清理工具",
-    "file_path": "https://privazer.com/zc/download.php",
-    "download_count": 0
-  },
-  {
-    "id": 3,
-    "name": "Clash Vage",
+    "name": "111",
     "version": "1.0.0",
     "category": "其他",
-    "description": "基于规则的网络代理工具",
+    "description": "1111",
     "file_path": "",
-    "download_count": 0
+    "icon_url": ""
   }
 ]
