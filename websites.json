@@ -70,5 +70,21 @@
     "description": "Anthropic官方推出的Agent，支持masOS、Linux、Windows",
     "icon_url": "",
     "url": "https://code.claude.com/docs/zh-CN/overview"
+  },
+  {
+    "id": 10,
+    "name": "Spaceship",
+    "category": "其他",
+    "description": "最便宜的高性价比域名管理及注册商",
+    "icon_url": "",
+    "url": "https://www.spaceship.com/zh/domains/"
+  },
+  {
+    "id": 11,
+    "name": "GitHub镜像站",
+    "category": "其他",
+    "description": "在国内网络访问缓慢或无法访问时或许能排上用场",
+    "icon_url": "",
+    "url": "https://jishuzhan.net/article/1965957555249266689"
   }
 ]

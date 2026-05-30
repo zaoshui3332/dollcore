@@ -16,5 +16,41 @@
     "description": "一款免费的电脑深度清理工具，简单易上手",
     "file_path": "https://privazer.com/zc/download.php",
     "icon_url": ""
+  },
+  {
+    "id": 3,
+    "name": "CC Swich",
+    "category": "其他",
+    "description": "统一管理你的Agent，会话管理，API余量查询",
+    "icon_url": "",
+    "version": "3.16.0",
+    "file_path": "https://www.ccswitch.io/zh/"
+  },
+  {
+    "id": 4,
+    "name": "Clash Verge",
+    "category": "其他",
+    "description": "Clash Verge 是一款基于 Clash 内核的跨平台图形化代理客户端，用于科学上网，网络加速和流量分流，支持masOS，Linux，Windows",
+    "icon_url": "",
+    "version": "2.5.1",
+    "file_path": "https://github.com/clash-verge-rev/clash-verge-rev/releases"
+  },
+  {
+    "id": 5,
+    "name": "向日葵远程控制",
+    "category": "其他",
+    "description": "一款免费的的远程控制软件，可实现手机与电脑双端互控",
+    "icon_url": "",
+    "version": "16.5.030757",
+    "file_path": "https://sunlogin.oray.com/download"
+  },
+  {
+    "id": 6,
+    "name": "Watt Toolkit",
+    "category": "其他",
+    "description": "原Steam++，用于游戏加速，steam平台挂卡，挂游戏时长，刷成就",
+    "icon_url": "",
+    "version": "1.0.0",
+    "file_path": "https://steampp.net/download"
   }
 ]
