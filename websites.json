@@ -86,5 +86,21 @@
     "description": "在国内网络访问缓慢或无法访问时或许能排上用场",
     "icon_url": "",
     "url": "https://jishuzhan.net/article/1965957555249266689"
+  },
+  {
+    "id": 12,
+    "name": "HiKaRi API",
+    "category": "其他",
+    "description": "api模型广场",
+    "icon_url": "",
+    "url": "https://hikariapi.xyz/"
+  },
+  {
+    "id": 13,
+    "name": "llm stats",
+    "category": "其他",
+    "description": "llm大模型排行榜",
+    "icon_url": "",
+    "url": "https://llm-stats.com/"
   }
 ]
