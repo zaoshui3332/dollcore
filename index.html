@@ -1,52 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="dark">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dollcore</title>
+  <title>整合站</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <div id="page-gate" class="gate" style="display:none">
-    <canvas id="particles"></canvas>
-    <div class="gate-bg-shapes">
-      <div class="gate-shape gate-shape-1"></div>
-      <div class="gate-shape gate-shape-2"></div>
-    </div>
-    <div class="gate-card" id="gate-card">
-      <h1 class="gate-logo">Dollcore</h1>
-      <p class="gate-poem">娉娉袅袅十三余，豆蔻梢头二月初。</p>
-      <div class="gate-divider"></div>
-      <p class="gate-hint">请输入验证信息以继续</p>
-      <form id="gate-form" class="gate-form">
-        <input id="gate-input" class="gate-input" type="text" placeholder="验证信息..." autofocus />
-        <p id="gate-error" class="gate-error" style="display:none">验证信息错误，请重试</p>
-        <button type="submit" class="gate-btn">
-          <span>进入</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </form>
-    </div>
-    <div class="gate-theme-row">
-      <button class="theme-toggle" id="theme-toggle-gate" title="切换主题">
-        <span class="theme-opt dark-opt active">暗</span>
-        <span class="theme-opt light-opt">亮</span>
-      </button>
-    </div>
-  </div>
-
   <div id="app">
     <nav class="navbar">
       <div class="inner">
-        <a href="#" class="logo" data-nav="home">Dollcore</a>
+        <a href="#" class="logo" data-nav="home">整合站</a>
         <div class="links">
           <a href="#" data-nav="home">首页</a>
           <button class="theme-toggle" id="theme-toggle-nav" title="切换主题">
-            <span class="theme-opt dark-opt active">暗</span>
-            <span class="theme-opt light-opt">亮</span>
+            <span class="theme-opt dark-opt">暗</span>
+            <span class="theme-opt light-opt active">亮</span>
           </button>
         </div>
       </div>
@@ -96,6 +66,6 @@
     </div>
   </div>
 
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=20260708-2"></script>
 </body>
 </html>
