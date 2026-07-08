@@ -1,7 +1,7 @@
 // ===== Theme =====
-function getTheme() { return localStorage.getItem('dollcore-theme') || 'dark'; }
+function getTheme() { return localStorage.getItem('zhenghezhan-theme') || 'light'; }
 function setTheme(t) {
-  localStorage.setItem('dollcore-theme', t);
+  localStorage.setItem('zhenghezhan-theme', t);
   document.documentElement.setAttribute('data-theme', t);
   document.querySelectorAll('.dark-opt').forEach(function(el) { el.classList.toggle('active', t === 'dark'); });
   document.querySelectorAll('.light-opt').forEach(function(el) { el.classList.toggle('active', t === 'light'); });
@@ -11,55 +11,6 @@ document.querySelectorAll('.theme-toggle').forEach(function(btn) {
   btn.addEventListener('click', function() { setTheme(getTheme() === 'dark' ? 'light' : 'dark'); });
 });
 
-// ===== Particles =====
-(function () {
-  var canvas = document.getElementById('particles');
-  if (!canvas) return;
-  var ctx = canvas.getContext('2d');
-  var particles = [];
-  var count = 45;
-  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-  for (var i = 0; i < count; i++) {
-    particles.push({
-      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
-      r: Math.random() * 1.8 + 0.5, alpha: Math.random() * 0.25 + 0.05,
-      pulse: Math.random() * Math.PI * 2
-    });
-  }
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    var isDark = getTheme() === 'dark';
-    var c = isDark ? '192,132,252' : '100,116,139';
-    for (var i = 0; i < particles.length; i++) {
-      var p = particles[i];
-      p.x += p.vx; p.y += p.vy; p.pulse += 0.015;
-      var alpha = p.alpha + Math.sin(p.pulse) * 0.1;
-      if (p.x < -10) p.x = canvas.width + 10;
-      if (p.x > canvas.width + 10) p.x = -10;
-      if (p.y < -10) p.y = canvas.height + 10;
-      if (p.y > canvas.height + 10) p.y = -10;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + c + ',' + Math.max(0.04, alpha) + ')';
-      ctx.fill();
-      for (var j = i + 1; j < particles.length; j++) {
-        var p2 = particles[j];
-        var dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-        if (dist < 100) {
-          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = 'rgba(' + c + ',' + (0.04 * (1 - dist / 100)) + ')';
-          ctx.lineWidth = 0.5; ctx.stroke();
-        }
-      }
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
 // ===== Data =====
 var softwareData = [];
 var websitesData = [];
@@ -67,12 +18,12 @@ var visitCounts = {};
 var currentSection = 'software';
 
 function loadCounts() {
-  try { visitCounts = JSON.parse(localStorage.getItem('dollcore-counts')) || {}; }
+  try { visitCounts = JSON.parse(localStorage.getItem('zhenghezhan-counts')) || {}; }
   catch(e) { visitCounts = {}; }
 }
 function saveCount(id) {
   visitCounts[id] = (visitCounts[id] || 0) + 1;
-  localStorage.setItem('dollcore-counts', JSON.stringify(visitCounts));
+  localStorage.setItem('zhenghezhan-counts', JSON.stringify(visitCounts));
 }
 loadCounts();
 
@@ -129,45 +80,7 @@ function initApp() {
   });
 }
 
-// ===== Gate =====
-(function () {
-  var ANSWER = 'ppnn13%dkst-Feb.1st';
-  if (sessionStorage.getItem('dollcore-auth') === '1') {
-    document.getElementById('page-gate').style.display = 'none';
-    document.getElementById('app').style.display = '';
-    initApp();
-    return;
-  }
-
-  document.getElementById('page-gate').style.display = '';
-  var card = document.getElementById('gate-card');
-  var input = document.getElementById('gate-input');
-  var errorEl = document.getElementById('gate-error');
-  document.getElementById('gate-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var val = input.value.trim();
-    if (val === 'root') {
-      card.classList.add('fade-out');
-      setTimeout(function() {
-        sessionStorage.setItem('dollcore-admin-auth', '1');
-        window.location.href = 'admin.html';
-      }, 600);
-    } else if (val === ANSWER) {
-      card.classList.add('fade-out');
-      setTimeout(function() {
-        sessionStorage.setItem('dollcore-auth', '1');
-        document.getElementById('page-gate').style.display = 'none';
-        document.getElementById('app').style.display = '';
-        initApp();
-      }, 600);
-    } else {
-      errorEl.style.display = '';
-      card.classList.add('shake');
-      input.value = '';
-      setTimeout(function() { card.classList.remove('shake'); errorEl.style.display = 'none'; }, 600);
-    }
-  });
-})();
+initApp();
 
 // ===== Home =====
 document.getElementById('search-form').addEventListener('submit', function(e) { e.preventDefault(); renderHome(); });
